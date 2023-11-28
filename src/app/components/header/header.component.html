@@ -1,8 +1,10 @@
 <mat-toolbar>
   <div class="container d-flex w-100 justify-content-between align-items-center">
     <div class="title">Starknet NFT Factory</div>
-    <div class="">
-      <button mat-raised-button color="primary" (click)="connectWallet()">Connect</button>
+    <div *ngIf="(connectionService.connected$ | async) === false" class="">
+      <button mat-raised-button color="primary" (click)="connectionService.connect()">
+        Connect
+      </button>
     </div>
   </div>
 </mat-toolbar>

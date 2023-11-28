@@ -3061,6 +3061,15 @@
         "hash": "sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ=="
       }
     },
+    "npm:@popperjs/core": {
+      "type": "npm",
+      "name": "npm:@popperjs/core",
+      "data": {
+        "version": "2.11.8",
+        "packageName": "@popperjs/core",
+        "hash": "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
+      }
+    },
     "npm:@rometools/cli-darwin-arm64": {
       "type": "npm",
       "name": "npm:@rometools/cli-darwin-arm64",
@@ -4508,6 +4517,15 @@
         "version": "1.0.0",
         "packageName": "boolbase",
         "hash": "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="
+      }
+    },
+    "npm:bootstrap": {
+      "type": "npm",
+      "name": "npm:bootstrap",
+      "data": {
+        "version": "5.3.2",
+        "packageName": "bootstrap",
+        "hash": "sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g=="
       }
     },
     "npm:bowser": {
@@ -18551,6 +18569,13 @@
       {
         "source": "npm:bonjour-service",
         "target": "npm:multicast-dns",
+        "type": "static"
+      }
+    ],
+    "npm:bootstrap": [
+      {
+        "source": "npm:bootstrap",
+        "target": "npm:@popperjs/core",
         "type": "static"
       }
     ],

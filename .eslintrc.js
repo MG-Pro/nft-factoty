@@ -34,7 +34,7 @@ module.exports = {
     {
       files: ['*.ts'],
       parserOptions: {
-        project: ['tsconfig.*?.json'],
+        project: ['tsconfig.json', 'tsconfig.*?.json'],
         createDefaultProgram: true,
       },
       plugins: ['import', 'unused-imports'],

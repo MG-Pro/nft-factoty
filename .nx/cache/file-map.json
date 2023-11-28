@@ -14,6 +14,7 @@
     "@angular/platform-server": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.0.1",
+    "bootstrap": "^5.3.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "get-starknet": "^3.0.1",
@@ -78,28 +79,44 @@
         "hash": "13044518069027839699"
       },
       {
+        "file": ".nx/cache/file-map.json",
+        "hash": "10879875397585568621"
+      },
+      {
+        "file": ".nx/cache/lockfile.hash",
+        "hash": "10506342871738107124"
+      },
+      {
+        "file": ".nx/cache/parsed-lock-file.json",
+        "hash": "12515515056626728428"
+      },
+      {
+        "file": ".nx/cache/project-graph.json",
+        "hash": "7650974926959961211"
+      },
+      {
         "file": ".prettierignore",
         "hash": "2537985168563860873"
       },
       {
         "file": "README.md",
-        "hash": "6825367886684206235"
+        "hash": "6947515604323373991"
       },
       {
         "file": "angular.json",
-        "hash": "4067722964219609234"
+        "hash": "2229830389475893951"
       },
       {
         "file": "package-lock.json",
-        "hash": "8330509045399839230"
+        "hash": "14383837304462908891"
       },
       {
         "file": "package.json",
-        "hash": "3010605994474002331"
+        "hash": "16820936529196983916"
       },
       {
         "file": "prettier.config.js",
-        "hash": "6010871183615469639"
+        "hash": "8946187423369129222"
       },
       {
         "file": "server.ts",
@@ -107,11 +124,11 @@
       },
       {
         "file": "src/app/app.routes.ts",
-        "hash": "11909104403187221086"
+        "hash": "2237204775233650156"
       },
       {
         "file": "src/app/components/app/app.component.html",
-        "hash": "151043640090426297"
+        "hash": "12289741314304186153"
       },
       {
         "file": "src/app/components/app/app.component.scss",
@@ -119,11 +136,11 @@
       },
       {
         "file": "src/app/components/app/app.component.spec.ts",
-        "hash": "8258510476653087072"
+        "hash": "5631521562906740735"
       },
       {
         "file": "src/app/components/app/app.component.ts",
-        "hash": "1239741710270285009"
+        "hash": "13227997853187723039"
       },
       {
         "file": "src/app/components/app/app.config.server.ts",
@@ -134,48 +151,88 @@
         "hash": "15150479086775375397"
       },
       {
+        "file": "src/app/components/footer/footer.component.html",
+        "hash": "17429595464752748015"
+      },
+      {
+        "file": "src/app/components/footer/footer.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/footer/footer.component.spec.ts",
+        "hash": "10910183056555637205"
+      },
+      {
+        "file": "src/app/components/footer/footer.component.ts",
+        "hash": "17349359798244843311"
+      },
+      {
+        "file": "src/app/components/header/header.component.html",
+        "hash": "5461985785744225421"
+      },
+      {
+        "file": "src/app/components/header/header.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/header/header.component.spec.ts",
+        "hash": "18382709109671394819"
+      },
+      {
+        "file": "src/app/components/header/header.component.ts",
+        "hash": "16112963115468986406"
+      },
+      {
         "file": "src/app/contracts/balance.json",
         "hash": "10366560431981706081"
       },
       {
-        "file": "src/app/modules/dashboard/dashboard/dashboard.component.html",
+        "file": "src/app/pages/dashboard/dashboard/dashboard.component.html",
         "hash": "4894489786295920269"
       },
       {
-        "file": "src/app/modules/dashboard/dashboard/dashboard.component.scss",
+        "file": "src/app/pages/dashboard/dashboard/dashboard.component.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/modules/dashboard/dashboard/dashboard.component.spec.ts",
+        "file": "src/app/pages/dashboard/dashboard/dashboard.component.spec.ts",
         "hash": "7608614853123900727"
       },
       {
-        "file": "src/app/modules/dashboard/dashboard/dashboard.component.ts",
+        "file": "src/app/pages/dashboard/dashboard/dashboard.component.ts",
         "hash": "13458153304252673776"
       },
       {
-        "file": "src/app/modules/dashboard/dashboard.module.ts",
+        "file": "src/app/pages/dashboard/dashboard.module.ts",
         "hash": "5734984192988908489"
       },
       {
-        "file": "src/app/modules/mint/mint/mint.component.html",
-        "hash": "9074944111993294494"
+        "file": "src/app/pages/mint/mint/mint.component.html",
+        "hash": "12631182444932368206"
       },
       {
-        "file": "src/app/modules/mint/mint/mint.component.scss",
+        "file": "src/app/pages/mint/mint/mint.component.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/app/modules/mint/mint/mint.component.spec.ts",
+        "file": "src/app/pages/mint/mint/mint.component.spec.ts",
         "hash": "11138963408186573050"
       },
       {
-        "file": "src/app/modules/mint/mint/mint.component.ts",
+        "file": "src/app/pages/mint/mint/mint.component.ts",
         "hash": "3331793812332332164"
       },
       {
-        "file": "src/app/modules/mint/mint.module.ts",
-        "hash": "17036828947992490626"
+        "file": "src/app/pages/mint/mint.module.ts",
+        "hash": "5148702893126063572"
+      },
+      {
+        "file": "src/app/services/connection.service.ts",
+        "hash": "2490297248363542864"
+      },
+      {
+        "file": "src/app/services/state.service.ts",
+        "hash": "4163938093915474311"
       },
       {
         "file": "src/assets/.gitkeep",
@@ -183,7 +240,7 @@
       },
       {
         "file": "src/index.html",
-        "hash": "16394503933996052352"
+        "hash": "2605276931639002136"
       },
       {
         "file": "src/main.server.ts",
@@ -195,7 +252,7 @@
       },
       {
         "file": "src/styles.scss",
-        "hash": "9173157221673158791"
+        "hash": "14163777899552696833"
       },
       {
         "file": "tsconfig.app.json",

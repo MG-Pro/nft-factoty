@@ -1,0 +1,214 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.1.2",
+  "deps": {
+    "@angular/animations": "^17.0.0",
+    "@angular/cdk": "^17.0.1",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/material": "^17.0.1",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/platform-server": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@angular/ssr": "^17.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "get-starknet": "^3.0.1",
+    "rxjs": "~7.8.0",
+    "starknet": "^5.19.5",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "^17.0.1",
+    "@angular-eslint/builder": "17.1.0",
+    "@angular-eslint/eslint-plugin": "17.1.0",
+    "@angular-eslint/eslint-plugin-template": "17.1.0",
+    "@angular-eslint/schematics": "17.1.0",
+    "@angular-eslint/template-parser": "17.1.0",
+    "@angular/cli": "^17.0.1",
+    "@angular/compiler-cli": "^17.0.0",
+    "@types/express": "^4.17.17",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "prettier-eslint": "^16.1.2",
+    "typescript": "~5.2.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".env.example",
+        "hash": "9860246635508076993"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "14332967516284471688"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "14729331494377299633"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13044518069027839699"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "2537985168563860873"
+      },
+      {
+        "file": "README.md",
+        "hash": "6825367886684206235"
+      },
+      {
+        "file": "angular.json",
+        "hash": "4067722964219609234"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "8330509045399839230"
+      },
+      {
+        "file": "package.json",
+        "hash": "3010605994474002331"
+      },
+      {
+        "file": "prettier.config.js",
+        "hash": "6010871183615469639"
+      },
+      {
+        "file": "server.ts",
+        "hash": "9424766114719320053"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "11909104403187221086"
+      },
+      {
+        "file": "src/app/components/app/app.component.html",
+        "hash": "151043640090426297"
+      },
+      {
+        "file": "src/app/components/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/app/app.component.spec.ts",
+        "hash": "8258510476653087072"
+      },
+      {
+        "file": "src/app/components/app/app.component.ts",
+        "hash": "1239741710270285009"
+      },
+      {
+        "file": "src/app/components/app/app.config.server.ts",
+        "hash": "16580035302907712941"
+      },
+      {
+        "file": "src/app/components/app/app.config.ts",
+        "hash": "15150479086775375397"
+      },
+      {
+        "file": "src/app/contracts/balance.json",
+        "hash": "10366560431981706081"
+      },
+      {
+        "file": "src/app/modules/dashboard/dashboard/dashboard.component.html",
+        "hash": "4894489786295920269"
+      },
+      {
+        "file": "src/app/modules/dashboard/dashboard/dashboard.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/modules/dashboard/dashboard/dashboard.component.spec.ts",
+        "hash": "7608614853123900727"
+      },
+      {
+        "file": "src/app/modules/dashboard/dashboard/dashboard.component.ts",
+        "hash": "13458153304252673776"
+      },
+      {
+        "file": "src/app/modules/dashboard/dashboard.module.ts",
+        "hash": "5734984192988908489"
+      },
+      {
+        "file": "src/app/modules/mint/mint/mint.component.html",
+        "hash": "9074944111993294494"
+      },
+      {
+        "file": "src/app/modules/mint/mint/mint.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/modules/mint/mint/mint.component.spec.ts",
+        "hash": "11138963408186573050"
+      },
+      {
+        "file": "src/app/modules/mint/mint/mint.component.ts",
+        "hash": "3331793812332332164"
+      },
+      {
+        "file": "src/app/modules/mint/mint.module.ts",
+        "hash": "17036828947992490626"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "16394503933996052352"
+      },
+      {
+        "file": "src/main.server.ts",
+        "hash": "3483771606664050443"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "8386321913942664298"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "9173157221673158791"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17948364081101022842"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "9302871749638073649"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
+      }
+    ]
+  }
+}

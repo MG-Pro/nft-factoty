@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, HostBinding, OnInit } from '@angular/core'
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { RouterOutlet } from '@angular/router'
 
@@ -13,7 +13,7 @@ import { FooterComponent } from '../footer/footer.component'
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') private readonly classes =
     'd-flex h-100 flex-column justify-content-between'
 
@@ -21,5 +21,9 @@ export class AppComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     await this.connectionService.connect(true)
+  }
+
+  public ngOnDestroy(): void {
+    this.connectionService.destroy()
   }
 }

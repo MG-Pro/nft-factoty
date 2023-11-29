@@ -1,1 +1,54 @@
 <app-header />
+
+<section class="container mt-3 mb-3">
+  <mat-card class="" appearance="raised">
+    <mat-card-content>
+      <div class="d-flex justify-content-between gap-3">
+        <div class="d-flex flex-column justify-content-between flex-grow-1">
+          <div class="">
+            <mat-card-subtitle>Collection info:</mat-card-subtitle>
+            <p class="fs-5 mb-1">
+              Name:
+              <span class="fs-4 text-light text-opacity-50">Collection</span>
+            </p>
+            <p class="fs-5 mb-1">
+              Contract:
+              <span class="fs-4 text-light text-opacity-50">0x1234</span>
+            </p>
+            <p class="fs-5 mb-1">
+              Price:
+              <span class="fs-4 text-light text-opacity-50">0.0001 ETH</span>
+            </p>
+            <p class="fs-5 mb-1">
+              Remaining:
+              <span class="fs-4 text-light text-opacity-50">444</span>
+            </p>
+            <p class="fs-5 mb-1">
+              Your have items:
+              <span class="fs-4 text-light text-opacity-50">0</span>
+            </p>
+          </div>
+          <div class="">
+            <mat-divider class="mt-3 mb-3" />
+            <mat-form-field class="w-100 mb-3" appearance="outline" [subscriptSizing]="'dynamic'">
+              <mat-label>Quantity</mat-label>
+              <input matInput type="number" min="1" />
+            </mat-form-field>
+
+            <div class="d-flex justify-content-end gap-3 align-items-end">
+              <button class="mint-bnt w-100" mat-raised-button color="accent">Mint</button>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <img
+            mat-card-image
+            class="col-img border border-danger-subtle border-5 border-opacity-50 rounded-1"
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

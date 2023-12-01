@@ -75,3 +75,17 @@ body {
   background: black;
   color: map.get(mat.$grey-palette, 200);
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: map.get(mat.$pink-palette, 300);
+}

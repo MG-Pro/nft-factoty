@@ -34,8 +34,18 @@
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
+          <mat-label>Max items per address</mat-label>
+          <input
+            matInput
+            type="number"
+            [min]="1"
+            formControlName="maxItemsPerAddress"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Currency</mat-label>
-          <mat-select formControlName="currency">
+          <mat-select formControlName="mintCurrency">
             <mat-option *ngFor="let opt of currencies" [value]="opt">
               {{ opt }}
             </mat-option>
@@ -43,7 +53,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>ERC</mat-label>
-          <mat-select formControlName="erc">
+          <mat-select formControlName="contractType">
             <mat-option *ngFor="let opt of ERCs" [value]="opt">
               {{ opt }}
             </mat-option>
@@ -52,7 +62,19 @@
       </div>
 
       <div class="">
-        <button class="mint-bnt w-100" mat-raised-button color="accent" [disabled]="form.invalid">
+        <div class="mb-3 d-flex justify-content-end">
+          <mat-slide-toggle formControlName="editable" [color]="'primary'"
+            >Editable</mat-slide-toggle
+          >
+        </div>
+
+        <button
+          class="mint-bnt w-100"
+          mat-raised-button
+          color="accent"
+          (click)="emitCreate()"
+          [disabled]="form.invalid"
+        >
           Create
         </button>
       </div>

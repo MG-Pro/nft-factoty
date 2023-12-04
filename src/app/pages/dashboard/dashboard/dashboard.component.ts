@@ -1,7 +1,9 @@
 import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { collectionsMocks } from '../../../../mocks/collections.mocks'
-import { CollectionModel } from '../../../types'
+import { StorageService } from '../../../services/storage.service'
+import { CollectionCreatingData, CollectionModel } from '../../../types'
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +15,13 @@ export class DashboardComponent {
   public collections: CollectionModel[] = collectionsMocks
   public collectionInx = -1
 
-  public createMode = true
+  public createMode = false
+
+  constructor(
+    private storageService: StorageService,
+    private router: Router,
+  ) {}
+
   public get collection(): CollectionModel {
     return this.collections[this.collectionInx]
   }
@@ -30,8 +38,26 @@ export class DashboardComponent {
     this.collectionInx = index
   }
 
-  public create(): void {
+  public creatingMode(): void {
     this.createMode = true
     this.collectionInx = -1
+  }
+
+  public viewMode(): void {
+    this.createMode = false
+  }
+
+  public async save(data: CollectionCreatingData): Promise<void> {
+    await this.storageService.uploadData(data)
+  }
+
+  public edit(): void {}
+
+  public delete(): void {}
+
+  public claim(): void {}
+
+  public toMintPage(): void {
+    this.router.navigateByUrl(`mint/${this.collection.contractAddress}`)
   }
 }

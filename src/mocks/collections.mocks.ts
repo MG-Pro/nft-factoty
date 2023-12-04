@@ -15,6 +15,10 @@ export const collectionsMocks: CollectionModel[] = [
     contractType: ERCEnum.ERC721,
     soldAmount: 0.001,
     unclaimedAmount: 0.00001,
+    editable: true,
+    imageURI:
+      'https://firebasestorage.googleapis.com/v0/b/nft-factory-78ab0.appspot.com/o/nft?alt=media',
+    disabled: false,
   },
   {
     ownerAddress: '0x0040f9Fb57b0eD2Db5415c11132078b5CAbF2D4bE6755E71b505a1D47435fD0a',
@@ -30,5 +34,8 @@ export const collectionsMocks: CollectionModel[] = [
     contractType: ERCEnum.ERC721,
     soldAmount: 0,
     unclaimedAmount: 0,
+    editable: false,
+    imageURI: '',
+    disabled: true,
   },
 ]

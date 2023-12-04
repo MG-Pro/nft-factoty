@@ -7,12 +7,21 @@
         <mat-card-subtitle>My collections</mat-card-subtitle>
         <mat-card-title *ngIf="!collections.length">No collection yet. Create it!</mat-card-title>
         <div class="">
-          <button mat-raised-button color="warn" (click)="create()">Create new collection</button>
+          <button *ngIf="!createMode" mat-raised-button color="warn" (click)="creatingMode()">
+            Create new collection
+          </button>
+          <button *ngIf="createMode" mat-raised-button color="warn" (click)="viewMode()">
+            Cancel without save
+          </button>
         </div>
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content class="mt-3">
-      <app-collection-form *ngIf="createMode" class="mb-3 d-block" />
+      <app-collection-form
+        *ngIf="createMode"
+        (collectionData)="save($event)"
+        class="mb-3 d-block"
+      />
       <mat-accordion class="justify-content-between">
         <mat-expansion-panel
           *ngFor="let item of collections; let i = index"
@@ -28,55 +37,94 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
-            <div class="">
-              <p class="fs-6 mb-2">
-                Name:
-                <span class="text-light text-opacity-50">
-                  {{ item.name }} ({{ item.symbol }})
-                </span>
-              </p>
-              <p class="fs-6 mb-2">
-                Contract:
-                <span class="text-light text-opacity-50">{{ item.contractAddress }}</span>
-              </p>
-              <p class="fs-6 mb-2">
-                Price:
-                <span class="text-light text-opacity-50"
-                  >{{ item.mintPrice }} {{ item.mintCurrency }}</span
-                >
-              </p>
-              <p class="fs-6 mb-2">
-                Minted:
-                <span class="text-light text-opacity-50">{{ item.mintedItems }}</span>
-              </p>
-              <p class="fs-6 mb-2">
-                Total amount:
-                <span class="text-light text-opacity-50">{{ item.totalAmount }}</span>
-              </p>
-              <p class="fs-6 mb-2">
-                Remaining:
-                <span class="text-light text-opacity-50">{{ remaining }}</span>
-              </p>
-              <p class="fs-6 mb-2">
-                Sold amount:
-                <span class="text-light text-opacity-50">
-                  {{ item.soldAmount }} {{ item.mintCurrency }}
-                </span>
-              </p>
-              <p class="fs-6 mb-2">
-                Unclaimed amount:
-                <span class="text-light text-opacity-50">
-                  {{ item.unclaimedAmount }} {{ item.mintCurrency }}
-                </span>
-              </p>
+            <div class="d-flex justify-content-between">
+              <div class="">
+                <p class="fs-6 mb-3">
+                  Name:
+                  <span class="text-light text-opacity-50">
+                    {{ item.name }} ({{ item.symbol }})
+                  </span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Contract:
+                  <span class="text-light text-opacity-50">{{ item.contractAddress }}</span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Price:
+                  <span class="text-light text-opacity-50"
+                    >{{ item.mintPrice }} {{ item.mintCurrency }}</span
+                  >
+                </p>
+                <p class="fs-6 mb-3">
+                  Minted:
+                  <span class="text-light text-opacity-50">{{ item.mintedItems }}</span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Total amount:
+                  <span class="text-light text-opacity-50">{{ item.totalAmount }}</span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Remaining:
+                  <span class="text-light text-opacity-50">{{ remaining }}</span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Sold amount:
+                  <span class="text-light text-opacity-50">
+                    {{ item.soldAmount }} {{ item.mintCurrency }}
+                  </span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Unclaimed amount:
+                  <span class="text-light text-opacity-50">
+                    {{ item.unclaimedAmount }} {{ item.mintCurrency }}
+                  </span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Max items per address:
+                  <span class="text-light text-opacity-50">
+                    {{ item.maxItemsPerAddress }}
+                  </span>
+                </p>
+                <p class="fs-6 mb-3">
+                  Editable:
+                  <span class="text-light text-opacity-50">
+                    {{ item.editable }}
+                  </span>
+                </p>
+              </div>
+              <div class="">
+                <img
+                  class="img-preview border border-danger-subtle border-5 border-opacity-50 rounded-1"
+                  [src]="item.imageURI"
+                  alt=""
+                />
+              </div>
             </div>
             <mat-divider class="mt-3 mb-3" />
             <div class="d-flex justify-content-end gap-3 align-items-center">
               <span *ngIf="disableClaim">
                 Claimable amount less than {{ MIN_CLAIMABLE_AMOUNT }} {{ item.mintCurrency }}
               </span>
-              <button mat-raised-button color="accent" [disabled]="disableClaim">Claim</button>
-              <button mat-raised-button color="warn">Edit</button>
+              <button mat-raised-button color="accent" [disabled]="disableClaim" (click)="claim()">
+                Claim
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                [disabled]="disableClaim"
+                (click)="toMintPage()"
+              >
+                Mint page
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!item.editable"
+                (click)="edit()"
+              >
+                Edit
+              </button>
+              <button mat-raised-button color="warn" (click)="delete()">Delete</button>
             </div>
           </ng-template>
         </mat-expansion-panel>

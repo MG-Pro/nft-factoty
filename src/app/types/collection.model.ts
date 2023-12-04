@@ -7,6 +7,20 @@ export enum ERCEnum {
   ERC1155 = 'ERC1155',
 }
 
+export interface CollectionCreatingData {
+  image: File
+  name: string
+  symbol: string
+  description: string
+  totalAmount: number
+  mintPrice: number
+  editable: boolean
+  mintCurrency: CurrenciesEnum
+  contractType: ERCEnum
+  ownerAddress: string
+  maxItemsPerAddress: number
+}
+
 export interface CollectionModel {
   ownerAddress: string
   contractAddress: string
@@ -21,4 +35,7 @@ export interface CollectionModel {
   contractType: ERCEnum
   soldAmount: number
   unclaimedAmount: number
+  editable: boolean
+  imageURI: string
+  disabled: boolean
 }

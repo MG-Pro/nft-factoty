@@ -1,8 +1,8 @@
 ::ng-deep {
   .dropZone {
     background: #000;
-    width: 320px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,8 +10,8 @@
   }
 
   .image {
-    width: 320px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
 
     img {
       border-radius: 6px;
@@ -28,4 +28,6 @@
   }
 }
 
-
+mat-form-field {
+  min-width: 278px;
+}

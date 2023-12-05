@@ -1,0 +1,36 @@
+<form [formGroup]="form" class="d-flex flex-column justify-content-between h-100">
+  <div class="d-flex gap-3 align-items-center">
+    <mat-form-field appearance="outline" [subscriptSizing]="'dynamic'">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="mintPrice" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" [subscriptSizing]="'dynamic'">
+      <mat-label>Total amount</mat-label>
+      <input matInput type="number" [min]="1" formControlName="totalAmount" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" [subscriptSizing]="'dynamic'">
+      <mat-label>Max items per address</mat-label>
+      <input
+        matInput
+        type="number"
+        [min]="1"
+        formControlName="maxItemsPerAddress"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <div class="d-flex justify-content-end">
+      <mat-slide-toggle formControlName="editable" [color]="'primary'">Editable</mat-slide-toggle>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end gap-3">
+    <button mat-raised-button color="primary" (click)="close()">Cancel</button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="save()"
+      [disabled]="form.invalid || !form.dirty"
+    >
+      Save
+    </button>
+  </div>
+</form>

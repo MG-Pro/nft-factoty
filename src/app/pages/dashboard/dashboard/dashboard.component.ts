@@ -13,8 +13,8 @@ import { CollectionCreatingData, CollectionModel } from '../../../types'
 export class DashboardComponent {
   public readonly MIN_CLAIMABLE_AMOUNT = 0.00001
   public collections: CollectionModel[] = collectionsMocks
-  public collectionInx = -1
-
+  public collectionInx = 0
+  public editableInx: number | null = null
   public createMode = false
 
   constructor(
@@ -34,6 +34,10 @@ export class DashboardComponent {
     return this.collection ? this.collection.totalAmount - this.collection.mintedItems : 0
   }
 
+  public get editMode(): boolean {
+    return Number.isInteger(this.editableInx)
+  }
+
   public setStep(index: number): void {
     this.collectionInx = index
   }
@@ -51,9 +55,22 @@ export class DashboardComponent {
     await this.storageService.uploadData(data)
   }
 
-  public edit(): void {}
+  public edit(): void {
+    this.editableInx = this.collectionInx
+  }
 
-  public delete(): void {}
+  public closeEdit(item: Partial<CollectionModel> | null): void {
+    this.editableInx = null
+    if (item) {
+      this.update(item)
+    }
+  }
+
+  public update(item: Partial<CollectionModel>): void {
+    console.log(item)
+  }
+
+  public disable(): void {}
 
   public claim(): void {}
 

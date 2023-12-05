@@ -9,6 +9,7 @@ import { provideRouter, Routes } from '@angular/router'
 
 import { CollectionFormComponent } from '../../components/collection-form/collection-form.component'
 import { HeaderComponent } from '../../components/header/header.component'
+import { QuickEditFormComponent } from '../../components/quick-edit-form/quick-edit-form.component'
 
 import { DashboardComponent } from './dashboard/dashboard.component'
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     MatIconModule,
     MatDividerModule,
     CollectionFormComponent,
+    QuickEditFormComponent,
   ],
 })
 export class DashboardModule {}

@@ -37,8 +37,8 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
-            <div class="d-flex justify-content-between">
-              <div class="">
+            <div class="d-flex justify-content-between gap-3">
+              <div class="" *ngIf="!editMode && editableInx !== i">
                 <p class="fs-6 mb-3">
                   Name:
                   <span class="text-light text-opacity-50">
@@ -92,6 +92,11 @@
                   </span>
                 </p>
               </div>
+              <app-quick-edit-form
+                *ngIf="editableInx === i"
+                [collection]="collection"
+                (saveData)="closeEdit($event)"
+              />
               <div class="">
                 <img
                   class="img-preview border border-danger-subtle border-5 border-opacity-50 rounded-1"
@@ -119,12 +124,12 @@
               <button
                 mat-raised-button
                 color="primary"
-                [disabled]="!item.editable"
+                [disabled]="!item.editable || editMode"
                 (click)="edit()"
               >
                 Edit
               </button>
-              <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+              <button mat-raised-button color="warn" (click)="disable()">Disable</button>
             </div>
           </ng-template>
         </mat-expansion-panel>

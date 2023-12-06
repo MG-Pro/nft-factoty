@@ -19,7 +19,7 @@
     <mat-card-content class="mt-3">
       <app-collection-form
         *ngIf="createMode"
-        (collectionData)="save($event)"
+        (collectionData)="openSaving($event)"
         class="mb-3 d-block"
       />
       <mat-accordion class="justify-content-between">
@@ -27,7 +27,7 @@
           *ngFor="let item of collections; let i = index"
           [expanded]="collectionInx === i"
           [disabled]="createMode"
-          (opened)="setStep(i)"
+          (opened)="openItem(i, item.contractAddress)"
         >
           <mat-expansion-panel-header>
             <mat-panel-title> {{ item.name }} ({{ item.symbol }})</mat-panel-title>
@@ -100,7 +100,7 @@
               <div class="">
                 <img
                   class="img-preview border border-danger-subtle border-5 border-opacity-50 rounded-1"
-                  [src]="item.imageURI"
+                  [src]="item.image"
                   alt=""
                 />
               </div>
@@ -137,3 +137,11 @@
     </mat-card-content>
   </mat-card>
 </section>
+
+<ng-template #createDialog>
+  <div class="">
+    <div mat-dialog-content>
+      <p>What's your favorite animal?</p>
+    </div>
+  </div>
+</ng-template>

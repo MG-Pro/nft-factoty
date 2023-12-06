@@ -23,7 +23,8 @@ export class ConnectionService {
     this.starknet = await connect(modalParams as ConnectOptions)
     console.log(this.starknet)
     if (!this.starknet) {
-      throw new Error('Failed to connect to wallet.')
+      console.error('Failed to connect to wallet.')
+      return
     }
     await this.starknet.enable({ starknetVersion: 'v5' })
     this.setListeners()

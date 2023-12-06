@@ -16,13 +16,13 @@ export const collectionsMocks: CollectionModel[] = [
     soldAmount: 0.001,
     unclaimedAmount: 0.00001,
     editable: true,
-    imageURI:
-      'https://firebasestorage.googleapis.com/v0/b/nft-factory-78ab0.appspot.com/o/nft?alt=media',
+    image: '',
+    dataURI: 'bafkreiaayar3k6btadanxq7pngdzmoy5oztjp6b5hwaqtw6lmw7tdgrrky',
     disabled: false,
   },
   {
     ownerAddress: '0x0040f9Fb57b0eD2Db5415c11132078b5CAbF2D4bE6755E71b505a1D47435fD0a',
-    contractAddress: '0x0040f9Fb57b0eD2Db5415c11132078b5CAbF2D4bE6755E71b505a1D47435fD0a',
+    contractAddress: '0x0040f9Fb57b0eD2Db5415c11132078b5CAbF2D4bE6755E71b505a1D47435fD01',
     mintedItems: 50,
     maxItemsPerAddress: 10,
     name: 'Test Collection',
@@ -35,7 +35,8 @@ export const collectionsMocks: CollectionModel[] = [
     soldAmount: 0,
     unclaimedAmount: 0,
     editable: false,
-    imageURI: '',
+    image: '',
+    dataURI: 'bafkreiaayar3k6btadanxq7pngdzmoy5oztjp6b5hwaqtw6lmw7tdgrrky',
     disabled: true,
   },
 ]

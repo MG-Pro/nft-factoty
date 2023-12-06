@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { RouterOutlet } from '@angular/router'
 
 import { ConnectionService } from '../../services/connection.service'
+import { StorageService } from '../../services/storage.service'
 import { FooterComponent } from '../footer/footer.component'
 
 @Component({
@@ -17,10 +18,14 @@ export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') private readonly classes =
     'd-flex h-100 flex-column justify-content-between'
 
-  constructor(public connectionService: ConnectionService) {}
+  constructor(
+    public connectionService: ConnectionService,
+    private storageService: StorageService,
+  ) {}
 
   public async ngOnInit(): Promise<void> {
     await this.connectionService.connect(true)
+    await this.storageService.init()
   }
 
   public ngOnDestroy(): void {

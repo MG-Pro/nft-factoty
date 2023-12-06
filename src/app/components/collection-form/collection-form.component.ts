@@ -38,10 +38,13 @@ export class CollectionFormComponent {
   public currencies: string[] = Object.values(CurrenciesEnum)
   public ERCs: string[] = Object.values(ERCEnum)
   public form: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
-    symbol: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
-    description: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(80)]],
-    price: [0, [Validators.required]],
+    name: ['TEST', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+    symbol: ['TEST', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
+    description: [
+      '123dnpm',
+      [Validators.required, Validators.minLength(4), Validators.maxLength(80)],
+    ],
+    price: [0.0001, [Validators.required]],
     totalAmount: [1, [Validators.required, Validators.min(1)]],
     mintCurrency: [{ value: CurrenciesEnum.ETH, disabled: true }, [Validators.required]],
     contractType: [{ value: ERCEnum.ERC721, disabled: true }, [Validators.required]],

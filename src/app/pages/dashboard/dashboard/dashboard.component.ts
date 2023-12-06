@@ -1,9 +1,10 @@
-import { Component } from '@angular/core'
+import { Component, TemplateRef, ViewChild } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 
 import { collectionsMocks } from '../../../../mocks/collections.mocks'
 import { StorageService } from '../../../services/storage.service'
-import { CollectionCreatingData, CollectionModel } from '../../../types'
+import { CollectionCreatingData, CollectionModel, Metadata } from '../../../types'
 
 @Component({
   selector: 'app-dashboard',
@@ -11,16 +12,27 @@ import { CollectionCreatingData, CollectionModel } from '../../../types'
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  @ViewChild('createDialog', { static: true }) public createDialogRef: TemplateRef<any> | undefined
+
   public readonly MIN_CLAIMABLE_AMOUNT = 0.00001
-  public collections: CollectionModel[] = collectionsMocks
-  public collectionInx = 0
+  public collectionsMap: Map<string, CollectionModel> = new Map()
+  public collectionInx = -1
   public editableInx: number | null = null
-  public createMode = false
+  public createMode = true
 
   constructor(
     private storageService: StorageService,
     private router: Router,
-  ) {}
+    private dialog: MatDialog,
+  ) {
+    collectionsMocks.forEach((el) => {
+      this.collectionsMap.set(el.contractAddress, el)
+    })
+  }
+
+  public get collections(): CollectionModel[] {
+    return Array.from(this.collectionsMap).map(([_, item]) => item)
+  }
 
   public get collection(): CollectionModel {
     return this.collections[this.collectionInx]
@@ -38,8 +50,21 @@ export class DashboardComponent {
     return Number.isInteger(this.editableInx)
   }
 
-  public setStep(index: number): void {
+  public openItem(index: number, contractAddress: string): void {
+    if (this.collectionInx === index) {
+      return
+    }
     this.collectionInx = index
+    this.loadMetadata(contractAddress)
+  }
+
+  public async loadMetadata(contractAddress: string): Promise<void> {
+    const item = this.collectionsMap.get(contractAddress)
+    const data: Metadata = await this.storageService.getCollectionMetadata(item?.dataURI as string)
+
+    if (data) {
+      this.collectionsMap.set(contractAddress, { ...item, ...data } as CollectionModel)
+    }
   }
 
   public creatingMode(): void {
@@ -51,8 +76,18 @@ export class DashboardComponent {
     this.createMode = false
   }
 
-  public async save(data: CollectionCreatingData): Promise<void> {
-    await this.storageService.uploadData(data)
+  public async openSaving(data: CollectionCreatingData): Promise<void> {
+    await this.storageService.uploadImgToIPFS(data)
+
+    // this.dialog
+    //   .open(this.createDialogRef as TemplateRef<any>, {
+    //     disableClose: true,
+    //     hasBackdrop: true,
+    //   })
+    //   .afterOpened()
+    //   .subscribe(() => {
+    //     console.log(11)
+    //   })
   }
 
   public edit(): void {
@@ -77,4 +112,6 @@ export class DashboardComponent {
   public toMintPage(): void {
     this.router.navigateByUrl(`mint/${this.collection.contractAddress}`)
   }
+
+  private save(): void {}
 }

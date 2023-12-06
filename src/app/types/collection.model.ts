@@ -21,14 +21,18 @@ export interface CollectionCreatingData {
   maxItemsPerAddress: number
 }
 
-export interface CollectionModel {
+export interface Metadata {
+  image: string
+  description: string
+  name: string
+}
+
+export interface CollectionModel extends Metadata {
   ownerAddress: string
   contractAddress: string
   mintedItems: number
   maxItemsPerAddress: number
-  name: string
   symbol: string
-  description: string
   totalAmount: number
   mintPrice: number
   mintCurrency: CurrenciesEnum
@@ -36,6 +40,6 @@ export interface CollectionModel {
   soldAmount: number
   unclaimedAmount: number
   editable: boolean
-  imageURI: string
   disabled: boolean
+  dataURI: string
 }

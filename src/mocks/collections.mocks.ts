@@ -36,7 +36,7 @@ export const collectionsMocks: CollectionModel[] = [
     unclaimedAmount: 0,
     editable: false,
     image: '',
-    dataURI: 'bafkreiaayar3k6btadanxq7pngdzmoy5oztjp6b5hwaqtw6lmw7tdgrrky',
+    dataURI: 'bafkreidhanbflqn3wbyygivrnorz77aqu3dtsxisothl2fyxonqqh5x2qq',
     disabled: true,
   },
 ]

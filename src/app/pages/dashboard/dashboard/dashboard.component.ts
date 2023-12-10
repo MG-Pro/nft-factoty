@@ -1,6 +1,7 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core'
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
+import { BehaviorSubject, from, switchMap } from 'rxjs'
 
 import { collectionsMocks } from '../../../../mocks/collections.mocks'
 import { StorageService } from '../../../services/storage.service'
@@ -11,24 +12,22 @@ import { CollectionCreatingData, CollectionModel, Metadata } from '../../../type
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   @ViewChild('createDialog', { static: true }) public createDialogRef: TemplateRef<any> | undefined
 
   public readonly MIN_CLAIMABLE_AMOUNT = 0.00001
   public collectionsMap: Map<string, CollectionModel> = new Map()
   public collectionInx = -1
   public editableInx: number | null = null
-  public createMode = true
+  public createMode = false
+  public uploadingStatus: boolean | null = false
+  public loading$ = new BehaviorSubject<boolean>(true)
 
   constructor(
     private storageService: StorageService,
     private router: Router,
     private dialog: MatDialog,
-  ) {
-    collectionsMocks.forEach((el) => {
-      this.collectionsMap.set(el.contractAddress, el)
-    })
-  }
+  ) {}
 
   public get collections(): CollectionModel[] {
     return Array.from(this.collectionsMap).map(([_, item]) => item)
@@ -50,12 +49,18 @@ export class DashboardComponent {
     return Number.isInteger(this.editableInx)
   }
 
-  public openItem(index: number, contractAddress: string): void {
+  public ngOnInit(): void {
+    this.loadCollections()
+  }
+
+  public async openItem(index: number, contractAddress: string): Promise<void> {
     if (this.collectionInx === index) {
       return
     }
     this.collectionInx = index
-    this.loadMetadata(contractAddress)
+    this.loading$.next(true)
+    await this.loadMetadata(contractAddress)
+    this.loading$.next(false)
   }
 
   public async loadMetadata(contractAddress: string): Promise<void> {
@@ -76,18 +81,37 @@ export class DashboardComponent {
     this.createMode = false
   }
 
-  public async openSaving(data: CollectionCreatingData): Promise<void> {
-    await this.storageService.uploadImgToIPFS(data)
+  public async save(data: CollectionCreatingData): Promise<void> {
+    const dialog = this.dialog.open(this.createDialogRef as TemplateRef<object>, {
+      disableClose: true,
+      hasBackdrop: true,
+      minWidth: 320,
+      minHeight: 200,
+    })
 
-    // this.dialog
-    //   .open(this.createDialogRef as TemplateRef<any>, {
-    //     disableClose: true,
-    //     hasBackdrop: true,
-    //   })
-    //   .afterOpened()
-    //   .subscribe(() => {
-    //     console.log(11)
-    //   })
+    dialog
+      .afterOpened()
+      .pipe(
+        switchMap(() => {
+          return from(this.storageService.uploadDataToIPFS(data))
+        }),
+      )
+      .subscribe((res: string | null) => {
+        console.log(res)
+        this.uploadingStatus = !!res
+      })
+
+    console.log(dialog)
+    dialog.afterClosed().subscribe(() => this.closeDialog())
+  }
+
+  public closeDialog(): void {
+    if (this.uploadingStatus) {
+      this.viewMode()
+      this.loadCollections()
+      return
+    }
+    console.log('val')
   }
 
   public edit(): void {
@@ -113,5 +137,9 @@ export class DashboardComponent {
     this.router.navigateByUrl(`mint/${this.collection.contractAddress}`)
   }
 
-  private save(): void {}
+  private loadCollections(): void {
+    collectionsMocks.forEach((el) => {
+      this.collectionsMap.set(el.contractAddress, el)
+    })
+  }
 }

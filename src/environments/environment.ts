@@ -1,3 +1,1 @@
-export const environment = {
-  TATUM_API_KEY: '',
-}
+export const environment = {}
